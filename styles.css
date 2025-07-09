@@ -1,0 +1,325 @@
+/* Общие стили */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+/* Шапка */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d89ef;
+  display: flex;
+  align-items: center;
+}
+
+.logo span {
+  margin-left: 8px;
+}
+
+/* Поиск */
+.search-box {
+  flex: 1;
+  margin-left: 24px;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-box input:focus {
+  border-color: #2d89ef;
+}
+
+/* Баннер акции */
+.banner {
+  width: 100%;
+  height: 300px;
+  background: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 16px;
+}
+
+.banner::after {
+  content: "";
+  position: absolute;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.4);
+}
+
+.banner-text {
+  position: relative;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.banner-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.banner-text p {
+  font-size: 1.2rem;
+}
+
+/* Разделы с товарами */
+.section {
+  padding: 40px 20px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #222;
+}
+
+/* Карточки товаров */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+.product-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.product-price {
+  font-size: 1rem;
+  color: #2d89ef;
+  font-weight: 600;
+}
+
+/* Адаптивность */
+@media(max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-box {
+    margin-left: 0;
+    margin-top: 12px;
+    width: 100%;
+  }
+
+  .banner {
+    height: 200px;
+  }
+
+  .banner-text h1 {
+    font-size: 2rem;
+  }
+}
+content-wrapper {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  gap: 20px;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.content-wrapper {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Удаляем стили для .categories-sidebar, чтобы сделать его фиксированным */
+.categories-sidebar {
+  position: fixed; /* фиксируем в окне */
+  top: 80px; /* немного ниже шапки, можно изменить */
+  right: 20px; /* справа от края */
+  width: 220px;
+  max-height: calc(100vh - 100px); /* чтобы не выходить за экран */
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* прокрутка при необходимости */
+  z-index: 1000; /* чтобы было сверху остальных элементов */
+}
+
+.categories-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.categories-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.category-btn {
+  padding: 8px 12px;
+  border: none;
+  background-color: #f0f2f5;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+
+.category-btn:hover,
+.category-btn.active {
+  background-color: #2d89ef;
+  color: #fff;
+}
+
+* Стиль для плавающей рекламы */
+.promo-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 250px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Можно изменить на 'stretch' или убрать */
+  z-index: 9999;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.promo-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.promo-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+.promo-text {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #444;
+}
+/* Боковое меню слева */
+.side-menu {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 9999;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #333;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.menu-item:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+.menu-item img {
+  width: 24px;
+  height: 24px;
+}

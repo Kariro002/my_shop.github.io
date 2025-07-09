@@ -1,0 +1,121 @@
+<!-- cart.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Корзина</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .cart-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Стили для списка товаров */
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .item-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .item-info img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      margin-right: 15px;
+      border-radius: 8px;
+    }
+
+    .item-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .total {
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    /* Кнопка оформления заказа */
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .checkout-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="cart-container">
+    <h1>Моя корзина</h1>
+
+    <!-- Пример товаров в корзине -->
+    <div class="cart-item">
+      <div class="item-info">
+        <img src="https://images.unsplash.com/photo-1606788075761-3bd1c6fba3a6" alt="Товар 1" />
+        <div class="item-details">
+          <span>Название товара 1</span>
+          <small>Цена: 500 ₽</small>
+        </div>
+      </div>
+      <div>
+        <button>Удалить</button>
+      </div>
+    </div>
+
+    <div class="cart-item">
+      <div class="item-info">
+        <img src="https://images.unsplash.com/photo-1549924231-f129b911e442" alt="Товар 2" />
+        <div class="item-details">
+          <span>Название товара 2</span>
+          <small>Цена: 750 ₽</small>
+        </div>
+      </div>
+      <div>
+        <button>Удалить</button>
+      </div>
+    </div>
+
+    <!-- Итоговая сумма -->
+    <div class="total">Общая сумма: 1250 ₽</div>
+
+    <!-- Кнопка оформления заказа -->
+    <button class="checkout-btn">Оформить заказ</button>
+  </div>
+</body>
+</html>

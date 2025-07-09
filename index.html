@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Современный маркетплейс</title>
+<!-- Подключение внешнего CSS -->
+<link rel="stylesheet" href="styles.css" />
+<!-- Подключение шрифтов Google -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <!-- Боковая панель с иконками -->
+<div class="side-menu">
+  <a href="profile.html" class="menu-item">
+    <img src="https://img.icons8.com/ios/24/000000/user.png" alt="Профиль" />
+    <span>Профиль</span>
+  </a>
+  <a href="cart.html" class="menu-item">
+    <img src="https://img.icons8.com/ios/24/000000/shopping-cart.png" alt="Корзина" />
+    <span>Корзина</span>
+  </a>
+  <a href="cart.html" class="menu-item">
+    <img src="https://img.icons8.com/ios/24/000000/heart.png" alt="Избранное" />
+    <span>Избранное</span>
+  </a>
+  <a href="cart.html" class="menu-item">
+    <img src="https://img.icons8.com/ios/24/000000/list.png" alt="Заказы" />
+    <span>Заказы</span>
+  </a>
+</div>
+    
+
+<!-- Шапка -->
+<header>
+  <div class="logo">🛍️ <span>Маркетплейс</span></div>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Поиск товаров..." />
+  </div>
+</header>
+
+<!-- Баннер акции -->
+<div class="banner">
+  <div class="banner-text">
+    <h1>Супер акция! Скидки до 50%</h1>
+    <p>Только сегодня! Не пропустите выгодные предложения</p>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <!-- Основной контент -->
+  <div class="main-content">
+    <!-- Раздел "Популярные товары" -->
+    <div class="section" id="popularSection">
+      <div class="section-title">Популярные товары</div>
+      <div class="products" id="productContainer"></div>
+    </div>
+  </div>
+  <!-- Боковая панель с категориями -->
+  <aside class="categories-sidebar">
+    <div class="categories-title">Категории</div>
+    <div class="categories-list" id="categoriesList">
+      <button class="category-btn active" data-category="all">Все</button>
+      <button class="category-btn" data-category="электроника">Электроника</button>
+      <button class="category-btn" data-category="одежда">Одежда</button>
+      <button class="category-btn" data-category="дом">Дом</button>
+      <button class="category-btn" data-category="игрушки">Игрушки</button>
+      <button class="category-btn" data-category="книги">Книги</button>
+      <button class="category-btn" data-category="спорт">Спорт</button>
+      <button class="category-btn" data-category="красота">Красота</button>
+      <button class="category-btn" data-category="авто">Авто</button>
+      <button class="category-btn" data-category="еда">Еда</button>
+      <button class="category-btn" data-category="мебель">Мебель</button>
+      <button class="category-btn" data-category="электроника">Электроника</button>
+      <button class="category-btn" data-category="запчасти">Запчасти</button>
+      <button class="category-btn" data-category="игры">Игры</button>
+      <button class="category-btn" data-category="хобби">Хобби</button>
+      <button class="category-btn" data-category="животные">Животные</button>
+      <button class="category-btn" data-category="сад">Сад</button>
+      <button class="category-btn" data-category="инструменты">Инструменты</button>
+      <button class="category-btn" data-category="техника">Техника</button>
+      <button class="category-btn" data-category="другое">Другое</button>
+    </div>
+  </aside>
+</div>
+
+<!-- Скрипт с данными и логикой -->
+<script>
+  const products = [
+    // Электроника
+    {
+      id: 1,
+      title: "Смартфон",
+      price: "15000 ₽",
+      category: "электроника",
+      image: "https://avatars.mds.yandex.net/i?id=9ec447014a53b8e55177a92c749f0ffc2ac0174f-4079549-images-thumbs&n=13"
+    },
+    {
+      id: 4,
+      title: "Ноутбук",
+      price: "40000 ₽",
+      category: "электроника",
+      image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      id: 8,
+      title: "Электросамокат",
+      price: "30000 ₽",
+      category: "электроника",
+      image: "https://avatars.mds.yandex.net/i?id=ff653b30c72c8e76816dbf450df1f1955f92717a-5232041-images-thumbs&n=13"
+    },
+    // Одежда
+    {
+      id: 2,
+      title: "Куртка",
+      price: "8000 ₽",
+      category: "одежда",
+      image: "https://avatars.mds.yandex.net/i?id=5abda90f556f1bf210517ad46a432156d7edbb73-4575585-images-thumbs&n=13"
+    },
+    {
+      id: 5,
+      title: "Платье",
+      price: "5000 ₽",
+      category: "одежда",
+      image: "https://avatars.mds.yandex.net/i?id=4d24b42e8d5428a56023dbaae1a9054ee9163070-4568535-images-thumbs&n=13"
+    },
+    {
+      id: 9,
+      title: "Кроссовки",
+      price: "7000 ₽",
+      category: "одежда",
+      image: "https://avatars.mds.yandex.net/i?id=2a0cf5bf7f9dd15fbba4e11cc5776d33fe7a965e-9154408-images-thumbs&n=13"
+    },
+    // Дом
+    {
+      id: 3,
+      title: "Диван",
+      price: "25000 ₽",
+      category: "дом",
+      image: "https://avatars.mds.yandex.net/i?id=10b77176453ec869537bbca840d95fe82fad5149-5276390-images-thumbs&n=13"
+    },
+    // Игрушки
+    {
+      id: 6,
+      title: "Мягкая игрушка",
+      price: "1500 ₽",
+      category: "игрушки",
+      image: "https://avatars.mds.yandex.net/i?id=7bfbf563a8621c02dfe4d26dabed48fd25b6d7f6-5876030-images-thumbs&n=13"
+    },
+    {
+      id: 7,
+      title: "Конструктор",
+      price: "2000 ₽",
+      category: "игрушки",
+      image: "https://avatars.mds.yandex.net/get-mpic/6273606/2a0000019252f58f9870ae7e1d47abdd4f2e/optimize"
+    },
+    // Добавим еще категории и товары для примера
+    {
+      id: 10,
+      title: "Книга по программированию",
+      price: "1200 ₽",
+      category: "книги",
+      image: "https://avatars.mds.yandex.net/i?id=50615003b8abd6d0f998a104e7f8aaea2de17e5f-5507593-images-thumbs&n=13"
+    },
+    {
+      id: 11,
+      title: "Футбольный мяч",
+      price: "1500 ₽",
+      category: "спорт",
+      image: "https://avatars.mds.yandex.net/i?id=bd16853771b7deeb36311d081dc2da3a79b89f04-5652108-images-thumbs&n=13"
+    },
+    {
+      id: 12,
+      title: "Косметика",
+      price: "2500 ₽",
+      category: "красота",
+      image: "https://avatars.mds.yandex.net/i?id=8740371f93d9f0b3d0930f64ced2a9e654435380-4417086-images-thumbs&n=13"
+    },
+    {
+      id: 13,
+      title: "Автомобильная шина",
+      price: "8000 ₽",
+      category: "авто",
+      image: "https://avatars.mds.yandex.net/i?id=9d9397c054d7ec3e70474997e745e07618241160-12885208-images-thumbs&n=13"
+    },
+    {
+      id: 14,
+      title: "Пицца",
+      price: "900 ₽",
+      category: "еда",
+      image: "https://avatars.mds.yandex.net/i?id=3e451c4d65c045f53617800a220e03efbb54eed2-5858998-images-thumbs&n=13"
+    }
+  ];
+
+  const container = document.getElementById('productContainer');
+  const categoriesButtons = document.querySelectorAll('.category-btn');
+
+  let currentCategory = 'all';
+  let currentSearch = '';
+
+  function renderProducts(filteredProducts) {
+    container.innerHTML = '';
+    filteredProducts.forEach(product => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+
+      card.innerHTML = `
+        <img src="${product.image}" alt="${product.title}" class="product-image" />
+        <div class="product-info">
+          <div class="product-title">${product.title}</div>
+          <div class="product-price">${product.price}</div>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  // Изначально показываем все
+  renderProducts(products);
+
+  // Обработчик поиска
+  document.getElementById('searchInput').addEventListener('input', () => {
+    currentSearch = document.getElementById('searchInput').value.toLowerCase();
+    filterAndRender();
+  });
+
+  // Обработчик кнопок категорий
+  categoriesButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      categoriesButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentCategory = btn.dataset.category;
+      filterAndRender();
+    });
+  });
+
+  function filterAndRender() {
+    let filtered = products;
+
+    if (currentCategory !== 'all') {
+      filtered = filtered.filter(p => p.category === currentCategory);
+    }
+
+    if (currentSearch.trim() !== '') {
+      filtered = filtered.filter(p => p.title.toLowerCase().includes(currentSearch));
+    }
+
+    renderProducts(filtered);
+  }
+  
+</script>
+<div class="promo-banner" id="promoBanner">
+  <div class="promo-content">
+    <img src="https://avatars.mds.yandex.net/i?id=7fbe01ba2035f03875b4e099b4b4b3db8a15d21a-9212030-images-thumbs&n=13" alt="Смартфон" class="promo-image" />
+    <div class="promo-text">
+      <h3>Скидка 20% на смартфон!</h3>
+      <p>Только сегодня! <strong>15000 ₽</strong></p>
+    </div>
+    <button class="close-btn" id="closePromo">&times;</button>
+  </div>
+</div>
+</body>
+</html>
